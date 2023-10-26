@@ -1,8 +1,6 @@
 # TrabalhoFinalAOC
 
-Para conseguir iniciar o projeto, é necessário realizar a instalação de pacotes por meio do Node Package Manager (NPM)
-
-`npm install`
+Instale os pacotes do projeto utilizando o NPM pelo comando ``npm install``
 
 ## Development server
 
