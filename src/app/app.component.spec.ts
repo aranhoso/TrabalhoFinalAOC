@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'trabalhoFinalAOC'`, () => {
+  it(`should have as title 'CPUSim'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('trabalhoFinalAOC');
+    expect(app.title).toEqual('CPUSim');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('trabalhoFinalAOC app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('CPUSim app is running!');
   });
 });
