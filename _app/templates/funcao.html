@@ -1,0 +1,88 @@
+{% extends "_base.html" %}
+{% load static %}
+{% block title %}Função 
+	{% if name == "" %}
+		Desconhecida
+	{% else %}
+		{{ name }}
+	{% endif %}
+{% endblock title %}
+{% block head %}
+	<link rel="stylesheet" href="{% static 'css/prism.css' %}">
+{% endblock head %}
+{% block content %}
+	{% if name == "" %}
+		<h1 class="title">Função Desconhecida!</h1>
+		<p>A função <code>{{ name }}</code> não foi encontrada.</p>
+		<p>Verifique se você digitou corretamente o nome da função.</p>
+		<a href="/">Voltar para a página inicial</a>
+	{% else %}
+		<h1 class="title">Função {{ name }}</h1>
+		<div class="char-info">
+			<a id="back" href="/">Voltar para a página inicial</a>
+			<div class="info-section">
+				<p class="info-title">Descrição:</p>
+				<p class="info-data">{{ description }}</p>
+			</div>
+			<div class="info-section">
+				<p class="info-title">Exemplo em MIPS:</p>
+				<p  class="info-data"><code class="info-data">{{ example }}</code></p>
+			</div>
+			<div class="info-section">
+				<p class="info-title">Equivalência em Pseudo-Código:</p>
+				<p  class="info-data"><code>{{ code_equialency }}</code></p>
+			</div>
+			<div class="info-section">
+				<p class="info-title">Opcode:</p>
+				<p class="info-data">
+					{% if opcode != '' %}
+						{{ opcode }}
+					{% else %}
+						N/A
+					{% endif %}
+				</p>
+			</div>
+			<div class="info-section">
+				<p class="info-title">Funct:</p>
+				<p class="info-data">
+					{% if funct != '' %}
+						{{ funct }}
+					{% else %}
+						N/A
+					{% endif %}
+				</p>
+			</div>
+			<div class="info-section">
+				<p class="info-title">Formato:</p>
+				<p class="info-data pre">
+					{% if format != '' %}
+						{{ format }}
+					{% else %}
+						N/A
+					{% endif %}
+				</p>
+			</div>
+		</div>
+		<hr/>
+		<div id="code-views">
+			<div class="code-view">
+				<p class="code-view-title">Código em MIPS</p>
+				{% if examples.assembly == '' %}
+					<p class="code-view-code center bold large">Sem exemplo, ou falha ao carregar exemplo.</p>
+				{% else %}
+					<pre><code class="code-view-code language-armasm">{{ examples.assembly }}</code></pre>
+				{% endif %}
+			</div>
+			<div class="code-view">
+				<p class="code-view-title">Código em {{ examples.lang }}</p>
+				{% if examples.code == '' %}
+					<p class="code-view-code center bold large">Sem exemplo, ou falha ao carregar exemplo.</p>
+				{% else %}
+					<pre><code class="code-view-code language-c">{{ examples.code }}</code></pre>
+				{% endif %}
+			</div>
+		</div>
+
+		<script src="{% static 'js/prism.js' %}"></script>
+	{% endif %}
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends "_base.html" %}
+{% block title %}Funções{% endblock title %}
+{% block content %}
+	<h1 class="title">Funções</h1>
+	<input type="text" id="char-search" placeholder="Pesquisar" />
+	<div id="display-chars">
+		{% for func in functions %}
+			<div class="char">
+				<h1>Função: <a href="/func/{{ func.name }}">{{ func.name }}</a></h1>
+				<div class="char-right">
+					<p>{{ func.description }}</p>
+					<p>Exempo: 
+						<code>{{ func.example }}</code>
+					</p>
+					<p>
+						Código equivalente:
+						<code>{{ func.code_equialency }}</code>
+					</p>
+					<p>Opcode: 
+						{% if func.opcode != '' %}
+							{{ func.opcode }}
+						{% else %}
+							N/A
+						{% endif %}
+					</p>
+					<p>
+						Funct: 
+						{% if func.funct != '' %}
+							{{ func.funct }}
+						{% else %}
+							N/A
+						{% endif %}
+					</p>
+					<p>
+						Formato: <span class="pre">
+						{% if func.format != '' %}
+							{{ func.format }}
+						{% else %}
+							N/A
+						{% endif %}
+						</span>
+					</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#char-search').keyup(function(){
+				var search = $(this).val();
+				$('.char').each(function(){
+					var text = $(this).find('h1').find("a").text();
+					if(search == '' || text.toLowerCase().indexOf(search) != -1 || text.toLowerCase() == search){
+						$(this).show();
+					}else{
+						$(this).hide();
+					}
+				});
+			});
+		});
+	</script>
+{% endblock content %}
