@@ -19,10 +19,10 @@
 	{% else %}
 		<h1 class="title">Função {{ name }}</h1>
 		<div class="char-info">
-			<a id="back" href="/">Voltar para a página inicial</a>
+			<a id="home-link" href="/">Voltar para a página inicial</a>
 			<div class="info-section">
 				<p class="info-title">Descrição:</p>
-				<p class="info-data">{{ description }}</p>
+				<p class="info-data">{{ description|safe }}</p>
 			</div>
 			<div class="info-section">
 				<p class="info-title">Exemplo em MIPS:</p>
