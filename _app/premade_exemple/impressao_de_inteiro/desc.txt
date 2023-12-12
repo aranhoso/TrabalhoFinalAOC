@@ -1,0 +1,1 @@
+Neste código, é feita a impressão de um número inteiro, que está armazenado no registrador `$t0`.

@@ -1,0 +1,23 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block title %}Exemplos pre feitos{% endblock title %}
+{% block head %}
+	<link rel="stylesheet" href="{% static 'css/prism.css' %}">
+{% endblock head %}
+
+{% block content %}
+<h1 class="title">Exemplos prontos</h1>
+<h2 class="center">Exemplos prontos para serem usados</h2>
+<div class="char-info">
+	{% for exemple in exemples %}
+		<div class="info-section">
+			<p class="info-title">{{ exemple.Name|safe }}</p>
+			<p class="info-data">{{ exemple.Desc|safe }}</p>
+			<pre><code class="code-exemple language-armasm">{{ exemple.Code }}</code></pre>
+		</div>
+	{% endfor %}
+</div>
+
+<script src="{% static 'js/prism.js' %}"></script>
+{% endblock content %}

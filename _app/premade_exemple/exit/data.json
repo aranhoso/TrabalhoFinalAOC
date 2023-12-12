@@ -1,0 +1,4 @@
+{
+    "Desc": "Neste código, a `syscall` de saída de um programa, no MIPS, é a `syscall 10`.",
+    "Name": "Saída de um programa"
+}

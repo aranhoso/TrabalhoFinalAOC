@@ -1,7 +1,17 @@
+# encoding: utf-8
+# encoding: iso-8859-1
+# encoding: win-1252
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-import json, os
+from django.utils.encoding import smart_str
+import json, os, sys
+from unicodedata import normalize
+import re as regex
+
+coding = sys.stdout.encoding
 
 mips_functions = [
 	{
@@ -473,4 +483,33 @@ def func_view(req, func_name = ""):
 		}
 
 	template = loader.get_template('funcao.html')
+	return HttpResponse(template.render(toSend, req))
+
+def exemples(req):
+	# scaneando o diretorio "premade_exemple" procurando por todas as pastas que tenham um arquivo "code.asm" e um "info.json"
+	# e salvando as informações de cada exemplo na variavel "exemple"
+	exemple = []
+	for root, dirs, files in os.walk(os.path.join(os.path.dirname(__file__), "premade_exemple")):
+		if "code.asm" in files and "data.json" in files:
+			with open(os.path.join(root, "data.json"), "r", encoding="utf-8") as f:
+				exemple.append(json.load(f))
+				# exemple[-1]['Name'] = smart_str(exemple[-1]['Name'])
+
+			with open(os.path.join(root, "code.asm"), "r") as f:
+				exemple[-1]['Code'] = f.read()
+
+	# substituindo **{text}** por <b>{text}</b>, *{text}* por <i>{text}</i> e `{text}` por <code>{text}</code>
+	# usando regex para substituir todas as ocorrências
+	for i in range(len(exemple)):
+		for j in ['Name', 'Desc']:
+			# exemple[i][j] = unicode(exemple[i][j], errors='replace')
+			exemple[i][j] = regex.sub(r"\*\*([^\*]+)\*\*", r"<b>\1</b>", exemple[i][j])
+			exemple[i][j] = regex.sub(r"\*([^\*]+)\*", r"<i>\1</i>", exemple[i][j])
+			exemple[i][j] = regex.sub(r"`([^\`]+)`", r"<code>\1</code>", exemple[i][j])
+			print(exemple[i][j])
+
+	toSend = {
+		'exemples': exemple
+	}
+	template = loader.get_template('premade_exemples.html')
 	return HttpResponse(template.render(toSend, req))
