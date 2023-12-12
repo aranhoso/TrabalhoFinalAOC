@@ -1,0 +1,111 @@
+#side-bar-open-btn {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	width: 25px;
+	height: 25px;
+	background: #1a1a1a;
+	border-radius: 50%;
+	z-index: 200;
+	color: #f0f0f0;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	cursor: pointer;
+}
+#side-bar-open-btn:hover {
+	background: #333;
+}
+#side-bar-open-btn .bar-open {
+	transition: all 0.5s ease;
+	margin-left: 250px;
+}
+#body {
+	transition: all 0.5s ease;
+	margin-left: 0;
+}
+
+#side-bar {
+	transition: all 0.5s ease;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background: #1a1a1a;
+	z-index: 201;
+	overflow-x: hidden;
+}
+
+#side-bar #close-bar {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 30px;
+	height: 30px;
+	background: #3f3f3f;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50%;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.5s ease;
+}
+#side-bar #close-bar:hover {
+	background: #f35353;
+}
+
+#side-bar .show-bar {
+	width: 250px;
+}
+
+#side-bar #side-bar-header {
+	display: block;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	margin-top: 20px;
+	border-bottom: #333 solid 1px;
+	color: #fff;
+	font-size: 30px;
+}
+
+#side-bar ul, #side-bar ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#side-bar ol li, #side-bar ul li {
+	width: 100%;
+	display: block;
+	padding: 20px;
+	text-transform: uppercase;
+	:not(:last-child) {
+		border-bottom: #333 solid 1px;
+	}
+}
+
+#side-bar li a {
+	width: 100%;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#side-bar li a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+@media screen and (max-height: 450px) {
+	#side-bar {padding-top: 15px;}
+	#side-bar a {font-size: 18px;}
+}

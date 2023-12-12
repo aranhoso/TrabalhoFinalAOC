@@ -441,7 +441,7 @@ a:hover, a:focus, a:active {
 	}
 }
 
-a[href="/"] {
+a#home-link, a#back {
 	position: fixed;
 	bottom: 0;
 	right: 0;
@@ -490,6 +490,15 @@ a[href="/"] {
 	white-space: pre-wrap;
 	overflow: auto;
 	font-size: 15px;
+	padding: 10px;
+	border-radius: 10px;
+}
+.code-exemple {
+	display: block;
+	word-wrap: break-word;
+	white-space: pre-wrap;
+	overflow: auto;
+	font-size: 20px;
 	padding: 10px;
 	border-radius: 10px;
 }
