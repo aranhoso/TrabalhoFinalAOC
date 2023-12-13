@@ -1,4 +1,4 @@
 {
-    "Desc": "Neste código, o programa requisita ao usuário que digite um número e o armazena no registrador $t0.",
+    "Desc": "Neste código, o programa requisita ao usuário que digite um número e o armazena no registrador `$t0`.",
     "Name": "Ler um número inteiro"
 }

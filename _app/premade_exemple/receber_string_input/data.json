@@ -1,0 +1,4 @@
+{
+    "Desc": "Este código permite o usuário digitar uma string que é guardada em `buffer` e depois imprime a string digitada.",
+    "Name": "Guardar string em buffer e imprimí-la."
+}

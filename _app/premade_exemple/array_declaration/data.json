@@ -1,0 +1,4 @@
+{
+    "Desc": "Neste código, é declarado um vetor de 20 palavras e na segunda posição do vetor é inserido o valor 10, presente no registrador `$s0`.",
+    "Name": "Criar array de inteiros e inserir valor."
+}

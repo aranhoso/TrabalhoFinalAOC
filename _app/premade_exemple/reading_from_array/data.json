@@ -1,0 +1,4 @@
+{
+    "Desc": "Neste código, é lido o terceiro valor um vetor de 20 palavras e esse valor é movido para o registrador `$s0`.",
+    "Name": "Carregar valor de um vetor."
+}

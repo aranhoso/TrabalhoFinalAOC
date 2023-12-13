@@ -1,0 +1,1 @@
+Neste código, o programa requisita ao usuário que digite um número e o armazena no registrador $t0.
