@@ -459,13 +459,13 @@ def main(req):
 
 def func_view(req, func_name = ""):
 	toSend = __get_function_by_name(func_name)
+	examples = {
+		'code': "",
+		'assembly': ""
+	}
 	if toSend['fname'] != '':
 		# reading all lines from the files "codes/c/<function_name>.c" and "codes/asm/<function_name>.asm"
 		# and saving them in the variables "code" and "assembly", respectively
-		examples = {
-			'code': "",
-			'assembly': ""
-		}
 		try:
 			with open(os.path.join(os.path.dirname(__file__), "codes/c/" + toSend['fname'] + ".c"), "r") as f:
 				examples['code'] = f.read()
@@ -476,11 +476,11 @@ def func_view(req, func_name = ""):
 				examples['assembly'] = f.read()
 		except:
 			examples['assembly'] = ""
-		toSend['examples'] = {
-			'code': examples['code'],
-			'lang': "c",
-			'assembly': examples['assembly']
-		}
+	toSend['examples'] = {
+		'code': examples['code'],
+		'lang': "c",
+		'assembly': examples['assembly']
+	}
 
 	template = loader.get_template('funcao.html')
 	return HttpResponse(template.render(toSend, req))
