@@ -1,11 +1,13 @@
 {% extends "_base.html" %}
+{% load static %}
+
 {% block title %}Funções{% endblock title %}
 {% block content %}
 	<h1 class="title">Funções</h1>
 	<input type="text" id="char-search" placeholder="Pesquisar" />
 	<div id="display-chars">
 		{% for func in functions %}
-			<div class="char">
+			<div class="char" id="{{ func.name }}">
 				<h1>Função: <a href="/func/{{ func.name }}">{{ func.name }}</a></h1>
 				<div class="char-right">
 					<p>{{ func.description }}</p>
@@ -45,19 +47,5 @@
 		{% endfor %}
 	</div>
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#char-search').keyup(function(){
-				var search = $(this).val();
-				$('.char').each(function(){
-					var text = $(this).find('h1').find("a").text();
-					if(search == '' || text.toLowerCase().indexOf(search) != -1 || text.toLowerCase() == search){
-						$(this).show();
-					}else{
-						$(this).hide();
-					}
-				});
-			});
-		});
-	</script>
+	<script type="text/javascript" src="{% static "js/search_engine.js" %}"></script>
 {% endblock content %}
